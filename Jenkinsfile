@@ -13,4 +13,11 @@ nosetests test.py --with-timer --with-xunit'''
       }
     }
   }
+  post {
+    failure {
+        mail to: 'shawn@tolidano.com',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
+    }
+  }
 }
