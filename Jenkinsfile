@@ -20,5 +20,11 @@ nosetests test.py --with-timer --with-xunit'''
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_URL}"
     }
+    success {
+        echo "Sending Success Notification Email"
+        mail to: 'shawn@tolidano.com',
+             subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Nothing is wrong with ${env.BUILD_URL}"
+    }
   }
 }
