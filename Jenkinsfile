@@ -15,6 +15,7 @@ nosetests test.py --with-timer --with-xunit'''
   }
   post {
     failure {
+        echo "Sending Failure Notification Email"
         mail to: 'shawn@tolidano.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_URL}"
